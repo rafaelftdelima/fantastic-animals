@@ -1,0 +1,26 @@
+body,
+h1,
+h2,
+ul,
+li,
+p,
+dl,
+dt,
+dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

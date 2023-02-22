@@ -156,3 +156,72 @@ a {
     margin-bottom: 0.5rem;
     margin-left: 30px;
 }
+
+.map {
+    grid-column: 2;
+}
+
+.contact ul li {
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 1rem;
+}
+
+.contact ul li::before {
+    background-color: #fb5;
+    content: "";
+    display: inline-block;
+    height: 10px;
+    margin-right: 10px;
+    width: 20px;
+}
+
+.copyright {
+    background-color: #fb5;
+    grid-column: 3 / -1;
+    margin-bottom: 2rem;
+}
+
+.copyright p {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    padding: 20px;
+}
+
+@media (max-width: 700px) {
+    #home {
+        grid-template-columns: 1fr;
+    }
+
+    .navegation,
+    .grid-section,
+    .copyright {
+        grid-column: 1;
+    }
+
+    .grid-section {
+        gap: 10px;
+        grid-template-columns: 100px 1fr;
+    }
+
+    .grid-section h1 {
+        font-size: 3rem;
+    }
+
+    .animals ul {
+        grid-column: 1;
+    }
+
+    .faq dl,
+    .map,
+    .contact ul {
+        grid-column: 1 / -1;
+    }
+
+    .navegation {
+        margin-top: 0px;
+    }
+
+    .copyright {
+        margin-bottom: 0px;
+    }
+}

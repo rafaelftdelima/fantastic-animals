@@ -284,3 +284,15 @@ a {
         max-height: 100px;
     }
 }
+
+.js .js-pagesection {
+    opacity: 0;
+    transform: translate3d(-32em, 0px, 0px);
+    transition: 0.5s;
+}
+
+.js .js-pagesection.actived {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+    transition: 0.5s;
+}

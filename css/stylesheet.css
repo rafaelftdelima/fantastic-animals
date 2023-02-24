@@ -140,6 +140,7 @@ a {
 
 .faq dt {
     color: #e54;
+    cursor: pointer;
     font-family: "IBM Plex Mono", monospace;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -153,6 +154,14 @@ a {
     height: 10px;
     margin-right: 10px;
     width: 20px;
+}
+
+.faq dt::after {
+    display: inline-block;
+    color: #fb5;
+    content: "⮧";
+    margin-left: 10px;
+    transition: transform 0.3s;
 }
 
 .faq dd {
@@ -244,8 +253,34 @@ a {
         opacity: 0;
         transform: translate3d(-2em, 0px, 0px);
     }
+
     to {
         opacity: 1;
         transform: translate3d(0px, 0px, 0px);
+    }
+}
+
+.js .js-accordion dd {
+    display: none;
+}
+
+.js .js-accordion dt.actived::after {
+    transform: rotate(180deg) scaleX(-1);
+}
+
+.js .js-accordion dt.actived+dd {
+    display: block;
+    animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0px;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 100px;
     }
 }

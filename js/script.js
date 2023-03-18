@@ -1,6 +1,6 @@
 function initTabNavegation() {
-    const tabMenu = document.querySelectorAll(".js-tabmenu li");
-    const tabContent = document.querySelectorAll(".js-tabcontent section");
+    const tabMenu = document.querySelectorAll('[data-page="menu"] li');
+    const tabContent = document.querySelectorAll('[data-tab="content"] section');
 
     if (tabMenu.length && tabContent.length) {
         tabContent[0].classList.add("actived");
@@ -10,7 +10,8 @@ function initTabNavegation() {
                 section.classList.remove("actived");
             });
 
-            tabContent[index].classList.add("actived");
+            const direction = tabContent[index].dataset.anime;
+            tabContent[index].classList.add("actived", direction);
         }
 
         tabMenu.forEach((item, index) => {
@@ -20,7 +21,7 @@ function initTabNavegation() {
 }
 
 function initAccordionList() {
-    const accordionList = document.querySelectorAll(".js-accordion dt");
+    const accordionList = document.querySelectorAll('[data-page="accordion"] dt');
 
     if (accordionList.length) {
         accordionList[0].classList.add("actived");
@@ -37,7 +38,7 @@ function initAccordionList() {
 }
 
 function initSmoothScroll() {
-    const internalLinks = document.querySelectorAll('.js-navegation a[href^="#"]');
+    const internalLinks = document.querySelectorAll('[data-page="navegation"] a[href^="#"]');
 
     if (internalLinks.length) {
         function scrollToSection(event) {
@@ -65,7 +66,7 @@ function initSmoothScroll() {
 }
 
 function initScrollAnimation() {
-    const sectionsList = document.querySelectorAll(".js-pagesection");
+    const sectionsList = document.querySelectorAll('[data-page="section"]');
 
     if (sectionsList.length) {
         const animationPoint = window.innerHeight * 0.6;

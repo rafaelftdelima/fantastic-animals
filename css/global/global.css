@@ -11,6 +11,11 @@ dd {
     padding: 0px;
 }
 
+body {
+    background-color: #faf6ed;
+    color: #222;
+}
+
 img {
     display: block;
     max-width: 100%;

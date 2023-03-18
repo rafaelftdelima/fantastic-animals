@@ -1,13 +1,11 @@
-#home {
-    background-color: #faf6ed;
-    color: #222;
+.grid-container {
     display: grid;
     grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
     -webkit-font-smoothing: antialiased;
 }
 
 @media (max-width: 700px) {
-    #home {
+    .grid-container {
         grid-template-columns: 1fr;
     }
 }

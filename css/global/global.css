@@ -1,0 +1,69 @@
+body,
+h1,
+h2,
+ul,
+li,
+p,
+dl,
+dt,
+dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.grid-section {
+    box-sizing: border-box;
+    display: grid;
+    grid-column: 2 / 4;
+    gap: 20px;
+    grid-template-columns: 90px 300px 1fr;
+    margin-bottom: 4rem;
+    padding: 10px;
+    width: 100%;
+}
+
+.js [data-page="section"] {
+    opacity: 0;
+    transform: translate3d(-32em, 0px, 0px);
+    transition: 0.5s;
+}
+
+[data-page="section"].actived {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+    transition: 0.5s;
+}
+
+.title {
+    font-family: "Playfair Display SC", georgia, serif;
+    font-size: 6rem;
+    font-weight: 400;
+    grid-column: 1 / -1;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+    .grid-section {
+        gap: 10px;
+        grid-template-columns: 100px 1fr;
+    }
+
+    .grid-section h1 {
+        font-size: 3rem;
+    }
+}

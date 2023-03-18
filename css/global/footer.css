@@ -1,0 +1,18 @@
+.copyright {
+    background-color: #fb5;
+    grid-column: 3 / -1;
+    margin-bottom: 2rem;
+}
+
+.copyright p {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    padding: 20px;
+}
+
+@media (max-width: 700px) {
+    .copyright {
+        grid-column: 1;
+        margin-bottom: 0px;
+    }
+}

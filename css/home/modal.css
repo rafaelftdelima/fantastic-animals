@@ -15,6 +15,10 @@
     display: flex;
 }
 
+.actived .modal {
+    animation: modal 0.3s forwards;
+}
+
 @keyframes modal {
     from {
         opacity: 0;
@@ -24,10 +28,6 @@
         opacity: 1;
         transform: translate3d(0px, 0px, 0px);
     }
-}
-
-.actived .modal {
-    animation: modal 0.3s forwards
 }
 
 .modal {

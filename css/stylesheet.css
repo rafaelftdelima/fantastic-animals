@@ -1,6 +1,7 @@
 @import url('./global/global.css');
 @import url('./global/navegation.css');
 @import url('./global/footer.css');
+@import url('./global/dropdown.css');
 
 @import url('./home/home.css');
 @import url('./home/animals.css');

@@ -11,9 +11,9 @@ export default function initScrollAnimation() {
                 if (sectionTopDistance < 0) {
                     section.classList.add("actived");
                 }
-                /* else {
+                else if (section.classList.contains('actived')) {
                     section.classList.remove("actived");
-                } */
+                }
             })
         }
 

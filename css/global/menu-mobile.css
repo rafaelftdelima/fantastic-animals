@@ -28,10 +28,15 @@
         background: #fff;
         box-shadow: 0px 4px #fff, 0px -4px #fff;
         margin-right: 4px;
+        transition: 0.3s transform;
+    }
+
+    .js [data-menu="button"].actived::before {
+        transform: rotate(90deg);
     }
 
     .js [data-menu="list"] {
-        display: block;
+        display: none;
         position: absolute;
         background: #fb5;
         width: 160px;
@@ -39,6 +44,22 @@
         padding: 60px 0px 20px 0px;
         top: 0px;
         box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        animation: show-down 0.3s forwards;
+    }
+
+    .js [data-menu="list"].actived {
+        display: block;
+    }
+
+    @keyframes show-down {
+        from {
+            opacity: 0;
+            transform: translate3d(0px, 30px, 0px);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(0px, 0px, 0px);
+        }
     }
 
     .js .dropdown-menu {

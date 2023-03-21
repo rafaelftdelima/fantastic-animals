@@ -63,7 +63,12 @@ a {
 }
 
 @media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
     .grid-section {
+        grid-column: 1;
         gap: 10px;
         grid-template-columns: 100px 1fr;
     }

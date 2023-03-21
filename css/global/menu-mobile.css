@@ -4,6 +4,45 @@
 
 @media (max-width: 700px) {
     .js [data-menu="button"] {
+        display: flex;
+        background: #222;
+        border: none;
+        padding: .5rem 1rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        margin: 10px;
+        align-items: center;
+        position: relative;
+        z-index: 112;
+    }
+
+    .js [data-menu="button"]::before {
+        content: '';
+        display: inline-block;
+        height: 2px;
+        width: 12px;
+        background: #fff;
+        box-shadow: 0px 4px #fff, 0px -4px #fff;
+        margin-right: 4px;
+    }
+
+    .js [data-menu="list"] {
         display: block;
+        position: absolute;
+        background: #fb5;
+        width: 160px;
+        z-index: 111;
+        padding: 60px 0px 20px 0px;
+        top: 0px;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .js .dropdown-menu {
+        position: static;
+        border: none;
     }
 }

@@ -75,9 +75,9 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 775px) {
     .navegation {
-        grid-column: 1;
+        grid-column: 1 / -1;
         margin-top: 0px;
     }
 }

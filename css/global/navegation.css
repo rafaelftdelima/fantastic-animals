@@ -49,11 +49,11 @@
     border-radius: 50%;
 }
 
-[data-status="opened"]::before {
-    animation: opened 0.6s alternate infinite;
+[data-status="open"]::before {
+    animation: open 0.6s alternate infinite;
 }
 
-@keyframes opened {
+@keyframes open {
     from {
         background: transparent;
     }

@@ -1,40 +1,36 @@
+import animateNumbers from './animate-numbers.js';
+
 export default function initNumbers() {
-    function animateNumbers() {
-        const numbers = document.querySelectorAll('[data-number]');
-
-        numbers.forEach(number => {
-            const total = +number.innerText;
-            const increment = Math.round(total / 25);
-            let start = 0;
-
-            number.innerText = '0';
-
-            const timer = setInterval(() => {
-                number.innerText = start;
-
-                start += increment;
-
-                if (start > total) {
-                    clearInterval(timer);
-
-                    number.innerText = total;
-                }
-            }, 50);
+    function createAnimal(animal) {
+        const item = document.createElement('div');
+        item.classList.add('number-animal');
+    
+        const animalName = document.createElement('h3');
+        animalName.innerText = animal.animal + ':';
+    
+        const number = document.createElement('span');
+        number.innerText = animal.total;
+        number.setAttribute('data-number', '');
+    
+        [animalName, number].forEach(element => {
+            item.appendChild(element);
+        })
+    
+        return item;
+    }
+    
+    async function fetchAnimals(url) {
+        const grid = document.querySelector('.numbers-grid');
+        const animalsResponse = await fetch(url);
+        const animalsJSON = await animalsResponse.json();
+    
+        animalsJSON.forEach(animal => {
+            const item = createAnimal(animal);
+            grid.appendChild(item);
         });
+    
+        animateNumbers();
     }
 
-    const target = document.querySelector('.numbers');
-    const observer = new MutationObserver(handleMutation);
-
-    function handleMutation(mutation) {
-        if (mutation[0].target.classList.contains('actived')) {
-            observer.disconnect();
-
-            animateNumbers();
-        }
-    }
-
-    observer.observe(target, {
-        attributes: true
-    });
+    fetchAnimals('./animalsapi.json');
 }

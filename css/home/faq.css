@@ -64,3 +64,10 @@
         grid-column: 1 / -1;
     }
 }
+
+.contact span[data-bitcoin] {
+    background: #3f4;
+    padding: .2rem .5rem;
+    font-weight: 600;
+    border-radius: 4px;
+}

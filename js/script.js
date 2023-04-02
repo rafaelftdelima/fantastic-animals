@@ -5,6 +5,7 @@ import initTooltip from "./modules/tooltip.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initNumbers from "./modules/numbers.js";
 import initStoreStatus from "./modules/store-status.js";
+import initFetchBitcoin from "./modules/fetch-bitcoin.js";
 
 initAnimations();
 initModal();
@@ -13,3 +14,4 @@ initDropdown();
 initMenuMobile();
 initNumbers();
 initStoreStatus();
+initFetchBitcoin();

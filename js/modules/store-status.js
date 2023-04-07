@@ -1,22 +1,46 @@
-export default function initStoreStatus() {
-    const status = document.querySelector('.navegation-status');
+export default class StoreStatus {
+    constructor(storeStatus, activeClass) {
+        this.storeStatus = document.querySelector(storeStatus);
+        this.activeClass = activeClass;
+    }
 
-    const openingHours = document.querySelector('[data-week]');
-    const daysOfWeek = openingHours.dataset.week.split(',').map(Number);
-    const hours = openingHours.dataset.hour.split(',').map(Number);
+    statusData() {
+        const target = document.querySelector('[data-week]');
 
-    const now = new Date();
-    const currentDayOfWeek = now.getDay();
-    const currentHour = now.getHours();
+        this.daysOfWeek = target.dataset.week.split(',').map(Number);
+        this.openingHours = target.dataset.hour.split(',').map(Number);
+    }
 
-    const isOpen = daysOfWeek.indexOf(currentDayOfWeek) !== -1 &&
-        currentHour >= hours[0] && currentHour <= hours[1];
+    dateNow() {
+        this.date = new Date();
+        this.dayOfWeek = this.date.getDay();
+        this.hour = this.date.getUTCHours() - 3;
+    }
 
-    if (isOpen) {
-        status.setAttribute('data-status', 'open');
-        status.innerText = 'Aberta agora';
-    } else {
-        status.setAttribute('data-status', 'closed');
-        status.innerText = 'Fechada';
+    isOpen() {
+        const weekDay = this.daysOfWeek.indexOf(this.dayOfWeek) !== -1;
+        const hourDay = this.hour >= this.openingHours[0] && this.hour < this.openingHours[1];
+
+        return weekDay && hourDay;
+    }
+
+    activeOpen() {
+        if (this.isOpen()) {
+            this.storeStatus.innerText = 'Aberta agora';
+            this.storeStatus.setAttribute('data-status', 'open');
+        } else {
+            this.storeStatus.innerText = 'Fechada';
+            this.storeStatus.setAttribute('data-status', 'closed');
+        }
+    }
+
+    init() {
+        if (this.storeStatus) {
+            this.statusData();
+            this.dateNow();
+            this.activeOpen();
+        }
+
+        return this;
     }
 }

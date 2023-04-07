@@ -1,24 +1,13 @@
-export default function initFetchBitcoin() {
-    const URL = 'https://blockchain.info/ticker';
-    const valueBoxes = document.querySelectorAll('[data-bitcoin]');
+export default async function fetchBitcoin(url, target) {
+    try {
+        const bitcoin = await fetch(url);
+        const bitcoinJSON = await bitcoin.json();
 
-    async function fetchBitcoinValue(url) {
-        const bitcoinJSON = await (await fetch(url)).json();
+        const bitcoinBox = document.querySelector(target);
+        const priceBRL = (1000 / bitcoinJSON.BRL.sell).toFixed(4);
 
-        return bitcoinJSON.BRL.sell;
+        bitcoinBox.innerText = priceBRL;
+    } catch (error) {
+        console.log(error);
     }
-
-    async function addBitcoinValue() {
-        try {
-            const bitcoinValue = await fetchBitcoinValue(URL);
-
-            valueBoxes.forEach(valueBox => {
-                valueBox.innerText = (1000 / bitcoinValue).toFixed(4);
-            });
-        } catch (error) {
-            console.log(Error(error));
-        }
-    }
-
-    addBitcoinValue();
 }

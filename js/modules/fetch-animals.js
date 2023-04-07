@@ -1,8 +1,9 @@
 import NumbersAnimation from './numbers.js';
 
-export default function fetchAnimais(url, target) {
+export default function fetchAnimals(url, target) {
     function createAnimal(animal) {
         const div = document.createElement('div');
+        div.classList.add('number-animal');
 
         div.innerHTML = `<h3>${animal.specie}</h3><span data-number>${animal.total}</span>`;
 
@@ -17,7 +18,7 @@ export default function fetchAnimais(url, target) {
     }
 
     function activeNumbersAnimation() {
-        const numbersAnimation = new NumbersAnimation('[data-number]', '.numbers-grid', 'actived');
+        const numbersAnimation = new NumbersAnimation('[data-number]', '.numbers', 'actived');
 
         numbersAnimation.init();
     }

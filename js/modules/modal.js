@@ -34,6 +34,6 @@ export default class Modal {
     addModalEvents() {
         this.openButton.addEventListener('click', this.eventToggleModal);
         this.closeButton.addEventListener('click', this.eventToggleModal);
-        this.containerModal.addEventListener('click', this.cliqueForaModal);
+        this.container.addEventListener('click', this.cliqueForaModal);
     }
 }

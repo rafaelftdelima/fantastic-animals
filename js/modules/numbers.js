@@ -1,36 +1,51 @@
-import animateNumbers from './animate-numbers.js';
+export default class NumbersAnimation {
+    constructor(numbers, observerTarget, observerClass) {
+        this.numbers = document.querySelectorAll(numbers);
+        this.observerTarget = document.querySelector(observerTarget);
+        this.observerClass = observerClass;
 
-export default function initNumbers() {
-    function createAnimal(animal) {
-        const item = document.createElement('div');
-        item.classList.add('number-animal');
-    
-        const animalName = document.createElement('h3');
-        animalName.innerText = animal.animal + ':';
-    
-        const number = document.createElement('span');
-        number.innerText = animal.total;
-        number.setAttribute('data-number', '');
-    
-        [animalName, number].forEach(element => {
-            item.appendChild(element);
-        })
-    
-        return item;
-    }
-    
-    async function fetchAnimals(url) {
-        const grid = document.querySelector('.numbers-grid');
-        const animalsResponse = await fetch(url);
-        const animalsJSON = await animalsResponse.json();
-    
-        animalsJSON.forEach(animal => {
-            const item = createAnimal(animal);
-            grid.appendChild(item);
-        });
-    
-        animateNumbers();
+        this.handleMutation = this.handleMutation.bind(this);
     }
 
-    fetchAnimals('./animalsapi.json');
+    init() {
+        if (this.numbers.length && this.observerTarget) {
+            this.addMutationObserver();
+        }
+        
+        return this;
+    }
+
+    static incrementValue(number) {
+        const total = +number.innerText;
+        const increment = Math.floor(total / 100);
+        let start = 0;
+
+        const timer = setInterval(() => {
+            start += increment;
+            number.innerText = start;
+
+            if (start > total) {
+                number.innerText = total;
+                clearInterval(timer);
+            }
+        }, 25 * Math.random());
+    }
+
+    animateNumber() {
+        this.numbers.forEach((number) =>
+            this.constructor.incrementValue(number)
+        );
+    }
+
+    handleMutation(mutation) {
+        if (mutation[0].target.classList.contains(this.observerClass)) {
+            this.observer.disconnect();
+            this.animateNumber();
+        }
+    }
+
+    addMutationObserver() {
+        this.observer = new MutationObserver(this.handleMutation);
+        this.observer.observe(this.observerTarget, { attributes: true });
+    }
 }

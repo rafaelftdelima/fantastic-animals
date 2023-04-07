@@ -4,7 +4,6 @@ export default function fetchAnimais(url, target) {
     function createAnimal(animal) {
         const div = document.createElement('div');
 
-        div.classList.add('numbers-grid');
         div.innerHTML = `<h3>${animal.specie}</h3><span data-number>${animal.total}</span>`;
 
         return div;

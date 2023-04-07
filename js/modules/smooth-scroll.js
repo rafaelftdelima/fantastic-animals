@@ -33,6 +33,6 @@ export default class SmoothScroll {
 
         const href = event.currentTarget.getAttribute('href');
         const section = document.querySelector(href);
-        section.scrollToView(this.options);
+        section.scrollIntoView(this.options);
     }
 }

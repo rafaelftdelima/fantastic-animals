@@ -1,4 +1,4 @@
-import outsideClick from './outsidec-click.js';
+import outsideClick from './outside-click.js';
 
 export default class MobileMenu {
     constructor(button, menuList, events) {
